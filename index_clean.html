@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Vitrine - Salão de Beleza & Estética</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary-rose: #e11d48;
+            --secondary-rose: #f43f5e;
+            --light-rose: #fdf2f8;
+            --gold: #d4a373;
+            --dark-gold: #b8956a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.8) 0%, rgba(244, 63, 94, 0.6) 50%, rgba(0,0,0,0.4) 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-rose), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fef7ff 100%);
+            border: 1px solid rgba(225, 29, 72, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.25);
+            border-color: var(--primary-rose);
+        }
+
+        .gallery-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.8), rgba(212, 163, 115, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .active-tab {
+            background: linear-gradient(135deg, var(--primary-rose), var(--gold));
+            color: white;
+            border-radius: 25px;
+            transform: scale(1.05);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fef7ff 100%);
+            border-left: 4px solid var(--gold);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-rose);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-elements::before,
+        .floating-elements::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.1), rgba(212, 163, 115, 0.1));
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-elements::before {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-elements::after {
+            bottom: 10%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.8); }
+            100% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+        }
+
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffffff, #fce7f3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-rose), var(--secondary-rose));
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-rose), var(--gold), var(--primary-rose), transparent);
+            margin: 2rem auto;
+            width: 100px;
+        }
+
+        .social-icon {
+            background: linear-gradient(135deg, var(--primary-rose), var(--gold));
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+        }
+
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .hidden-gallery {
+            display: none;
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Enhanced Form Styles */
+        .contact-form {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(254, 242, 248, 0.9));
+            border: 1px solid rgba(225, 29, 72, 0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(225, 29, 72, 0.12);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-form:hover {
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-rose), var(--gold), var(--primary-rose));
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .form-input {
+            border: 2px solid rgba(243, 244, 246, 0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            padding: 14px 18px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1f2937;
+            width: 100%;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-rose);
+            box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.15);
+            background: #ffffff;
+            outline: none;
+            transform: translateY(-2px);
+        }
+
+        .form-input:hover {
+            border-color: rgba(225, 29, 72, 0.3);
+            background: #ffffff;
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+            font-style: italic;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus::placeholder {
+            opacity: 0.7;
+            transform: translateX(5px);
+        }
+
+        .form-label {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .form-label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        #contactForm button[type="submit"] {
+            background: linear-gradient(135deg, var(--primary-rose), var(--gold));
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.2);
+            text-transform: uppercase;
+        }
+
+        #contactForm button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(225, 29, 72, 0.3);
+        }
+
+        #contactForm button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        #contactForm button[type="submit"]:hover::before {
+            left: 100%;
+        }
+
+        #contactForm button[type="submit"]::after {
+            content: '✨';
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        #contactForm button[type="submit"]:hover::after {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        #contactForm textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um horário no Bella Vitrine" target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full navbar-blur shadow-lg z-50">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <div class="text-3xl font-bold heading-font gradient-text">
+                    <a href="#"><i class="fas fa-crown mr-2"></i>Bella Vitrine</a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-rose-600 transition font-medium">Home</a>
+                    <a href="#services" class="hover:text-rose-600 transition font-medium">Serviços</a>
+                    <a href="#gallery" class="hover:text-rose-600 transition font-medium">Galeria</a>
+                    <a href="#about" class="hover:text-rose-600 transition font-medium">Sobre Nós</a>
+                    <a href="#testimonials" class="hover:text-rose-600 transition font-medium">Depoimentos</a>
+                    <a href="#contact" class="hover:text-rose-600 transition font-medium">Contato</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#home" class="hover:text-rose-600 transition font-medium">Home</a>
+                    <a href="#services" class="hover:text-rose-600 transition font-medium">Serviços</a>
+                    <a href="#gallery" class="hover:text-rose-600 transition font-medium">Galeria</a>
+                    <a href="#about" class="hover:text-rose-600 transition font-medium">Sobre Nós</a>
+                    <a href="#testimonials" class="hover:text-rose-600 transition font-medium">Depoimentos</a>
+                    <a href="#contact" class="hover:text-rose-600 transition font-medium">Contato</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-24 h-screen flex items-center">
+        <div class="floating-elements"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
+        <img src="img/salao.JPG" alt="Salão de beleza luxuoso" class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="container mx-auto px-4 relative z-10 text-white" data-aos="fade-up">
+            <div class="max-w-4xl">
+                <p class="script-font text-2xl md:text-3xl mb-4 text-pink-200">Bem-vinda ao</p>
+                <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Bella Vitrine
+                    <span class="block text-3xl md:text-4xl text-pink-200 mt-2">Salão de Beleza & Estética</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed">
+                    Transforme sua beleza em arte. Cuidados profissionais que valorizam sua essência e elevam sua autoestima.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn-primary text-white px-8 py-4 rounded-full font-semibold transition text-lg">
+                        <i class="fas fa-calendar-alt mr-2"></i>Agende Agora
+                    </a>
+                    <a href="#services" class="border-2 border-white hover:bg-white hover:text-gray-800 text-white px-8 py-4 rounded-full font-semibold transition text-lg">
+                        <i class="fas fa-spa mr-2"></i>Nossos serviços
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Galeria</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Confira alguns momentos e resultados do nosso salão</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="img/salão.jpg" alt="Salão ambiente" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Ambiente Aconchegante</h3>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="img/ThinkstockPhotos-511777075_edit.jpg" alt="Equipe profissional" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Equipe Profissional</h3>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="img/4_maquiagem-para-casamento-2.jpg" alt="Maquiagem de casamento" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Maquiagem de Casamento</h3>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80" alt="Cortes de cabelo incríveis" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Cortes de Cabelo Incríveis</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold mb-6">Sobre Nós</h2>
+            <p class="text-gray-700 mb-6">
+                No Bella Vitrine, nossa missão é realçar a beleza natural de cada cliente com tratamentos personalizados e atendimento de excelência. Com anos de experiência, nossa equipe é apaixonada pelo que faz e dedicada a proporcionar momentos de cuidado e autoestima.
+            </p>
+            <p class="text-gray-700">
+                Utilizamos produtos de alta qualidade e técnicas modernas para garantir resultados incríveis e duradouros. Venha nos conhecer e transforme sua beleza em arte!
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="heading-font text-3xl md:text-4xl font-bold mb-12 text-center">Depoimentos</h2>
+            <div class="space-y-8">
+                <div class="testimonial-card p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Silva" class="w-12 h-12 rounded-full object-cover" />
+                    <div>
+                        <p class="font-semibold text-rose-600 mb-1">Maria Silva</p>
+                        <p class="text-gray-700">O Bella Vitrine transformou minha autoestima! Atendimento impecável e resultados incríveis.</p>
+                    </div>
+                </div>
+                <div class="testimonial-card p-6 rounded-lg shadow-md flex items-start space-x-4">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Souza" class="w-12 h-12 rounded-full object-cover" />
+                    <div>
+                        <p class="font-semibold text-rose-600 mb-1">Ana Souza</p>
+                        <p class="text-gray-700">Profissionais dedicados e ambiente acolhedor. Recomendo para quem busca qualidade e carinho.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-rose-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="stats-counter text-white">500+</div>
+                    <p class="text-rose-100">Clientes Satisfeitas</p>
+                </div>
+                <div>
+                    <div class="stats-counter text-white">5</div>
+                    <p class="text-rose-100">Anos de Experiência</p>
+                </div>
+                <div>
+                    <div class="stats-counter text-white">15+</div>
+                    <p class="text-rose-100">Serviços Oferecidos</p>
+                </div>
+                <div>
+                    <div class="stats-counter text-white">100%</div>
+                    <p class="text-rose-100">Satisfação Garantida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Nossos Serviços</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Oferecemos tratamentos personalizados para realçar sua beleza natural com produtos de alta qualidade</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-cut text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Cortes & Penteados</h3>
+                    <p class="text-gray-600 text-center mb-4">Transformações completas com cortes modernos e penteados exclusivos.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Corte feminino</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Corte masculino</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Penteado noivas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Escova progressiva</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-palette text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Coloração</h3>
+                    <p class="text-gray-600 text-center mb-4">Técnicas avançadas de coloração para resultados naturais ou ousados.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Coloração tradicional</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Mechas californianas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Luzes refinadas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Tonalizante</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-spa text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Estética Facial</h3>
+                    <p class="text-gray-600 text-center mb-4">Tratamentos faciais personalizados para renovação da pele.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Limpeza de pele</li>

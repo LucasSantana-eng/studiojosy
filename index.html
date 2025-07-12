@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Josy - Salão de Beleza & Estética</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-gray-50 text-gray-800 scroll-snap-container">
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um horário no Studio Josy" target="_blank" class="floating-whatsapp gpu-accelerated">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full navbar-blur shadow-lg z-50">
+        <div class="container mx-auto px-4 py-4">
+            <nav class="flex justify-between items-center">
+                <div class="text-3xl font-bold heading-font gradient-text">
+                    <a href="#inicio"><i class="fas fa-crown mr-2"></i>Studio Josy</a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="nav-link hover:text-rose-600 transition font-medium">Início</a>
+                    <a href="#services" class="nav-link hover:text-rose-600 transition font-medium">Serviços</a>
+                    <a href="#gallery" class="nav-link hover:text-rose-600 transition font-medium">Galeria</a>
+                    <a href="#about" class="nav-link hover:text-rose-600 transition font-medium">Sobre Nós</a>
+                    <a href="#testimonials" class="nav-link hover:text-rose-600 transition font-medium">Depoimentos</a>
+                    <a href="#contact" class="nav-link hover:text-rose-600 transition font-medium">Contato</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-800 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#inicio" class="nav-link hover:text-rose-600 transition font-medium">Início</a>
+                    <a href="#services" class="nav-link hover:text-rose-600 transition font-medium">Serviços</a>
+                    <a href="#gallery" class="nav-link hover:text-rose-600 transition font-medium">Galeria</a>
+                    <a href="#about" class="nav-link hover:text-rose-600 transition font-medium">Sobre Nós</a>
+                    <a href="#testimonials" class="nav-link hover:text-rose-600 transition font-medium">Depoimentos</a>
+                    <a href="#contact" class="nav-link hover:text-rose-600 transition font-medium">Contato</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-24 h-screen flex items-center scroll-snap-section hero-bg-fixed" style="background-image: url('img/salao.JPG');">
+        <div class="floating-elements"></div>
+        <div class="absolute inset-0 hero-overlay"></div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-white">
+            <div class="max-w-4xl fade-in-up">
+                <p class="script-font text-2xl md:text-3xl mb-4 text-pink-200">Bem-vinda ao</p>
+                <h1 class="heading-font text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Sudio Josy
+                    <span class="block text-3xl md:text-4xl text-pink-200 mt-2">Salão de Beleza & Estética</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed">
+                    Transforme sua beleza em arte. Cuidados profissionais que valorizam sua essência e elevam sua autoestima.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn-primary text-white px-8 py-4 rounded-full font-semibold transition text-lg gpu-accelerated">
+                        <i class="fas fa-calendar-alt mr-2"></i>Agende Agora
+                    </a>
+                    <a href="#services" class="border-2 border-white hover:bg-white hover:text-gray-800 text-white px-8 py-4 rounded-full font-semibold transition text-lg gpu-accelerated">
+                        <i class="fas fa-spa mr-2"></i>Nossos serviços
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Nossos Serviços</h2>
+                <div class="section-divider"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">Oferecemos tratamentos personalizados para realçar sua beleza natural com produtos de alta qualidade</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-left gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-cut text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Cortes & Penteados</h3>
+                    <p class="text-gray-600 text-center mb-4">Transformações completas com cortes modernos e penteados exclusivos.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Corte feminino</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Corte masculino</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Penteado noivas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Escova progressiva</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-up gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-palette text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Coloração</h3>
+                    <p class="text-gray-600 text-center mb-4">Técnicas avançadas de coloração para resultados naturais ou ousados.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Coloração tradicional</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Mechas californianas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Luzes refinadas</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Tonalizante</li>
+                    </ul>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-right gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-spa text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Estética Facial</h3>
+                    <p class="text-gray-600 text-center mb-4">Tratamentos faciais personalizados para renovação da pele.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Limpeza de pele</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Peeling químico</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Massagem facial</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Hidratação profunda</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-left gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-hand-sparkles text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Manicure & Pedicure</h3>
+                    <p class="text-gray-600 text-center mb-4">Cuidados completos para suas unhas com técnicas modernas.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Manicure tradicional</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Pedicure completa</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Esmaltação em gel</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Nail art</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-up gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-magic text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Maquiagem</h3>
+                    <p class="text-gray-600 text-center mb-4">Maquiagem profissional para todas as ocasiões especiais.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Maquiagem social</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Maquiagem de noiva</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Maquiagem artística</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Design de sobrancelhas</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 border-t-4 border-rose-400 fade-in-right gpu-accelerated">
+                    <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-leaf text-2xl text-rose-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Tratamentos Corporais</h3>
+                    <p class="text-gray-600 text-center mb-4">Relaxamento e bem-estar para todo o corpo.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Massagem relaxante</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Esfoliação corporal</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Hidratação profunda</li>
+                        <li class="flex items-center"><i class="fas fa-check text-rose-600 mr-2"></i>Drenagem linfática</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-100 scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Galeria</h2>
+                <div class="section-divider"></div>
+                <p class="max-w-2xl mx-auto text-gray-600">Confira alguns momentos e resultados do nosso salão</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-left gpu-accelerated">
+                    <img src="img/salão.jpg" alt="Salão ambiente" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Ambiente Aconchegante</h3>
+                        <p class="text-white text-sm mt-2">Espaço moderno e confortável</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-up gpu-accelerated">
+                    <img src="img/ThinkstockPhotos-511777075_edit.jpg" alt="Equipe profissional" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Equipe Profissional</h3>
+                        <p class="text-white text-sm mt-2">Especialistas em beleza</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-right gpu-accelerated">
+                    <img src="img/4_maquiagem-para-casamento-2.jpg" alt="Maquiagem de casamento" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Maquiagem de Casamento</h3>
+                        <p class="text-white text-sm mt-2">Seu dia especial perfeito</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-left gpu-accelerated">
+                    <img src="img/corte.jpeg" alt="Cortes de cabelo incríveis" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Cortes Incríveis</h3>
+                        <p class="text-white text-sm mt-2">Transformações únicas</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-up gpu-accelerated">
+                    <img src="img/TRAT-ROSTO.jpg" alt="Tratamentos faciais" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Tratamentos Faciais</h3>
+                        <p class="text-white text-sm mt-2">Cuidados especializados</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-right gpu-accelerated">
+                    <img src="img/nail art.jpg" alt="Manicure e pedicure" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Nail Art</h3>
+                        <p class="text-white text-sm mt-2">Unhas sempre perfeitas</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-left gpu-accelerated">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Coloração de cabelo" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Coloração</h3>
+                        <p class="text-white text-sm mt-2">Cores vibrantes e naturais</p>
+                    </div>
+                </div>
+                <div class="gallery-item relative overflow-hidden shadow-lg fade-in-up gpu-accelerated">
+                    <img src="img/relaxamento.jpg" alt="Relaxamento" class="w-full h-64 object-cover" />
+                    <div class="gallery-overlay">
+                        <h3 class="text-white text-lg font-semibold">Relaxamento</h3>
+                        <p class="text-white text-sm mt-2">Momentos de bem-estar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Sobre Nós</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-left">
+                        <h3 class="heading-font text-2xl font-bold mb-6 text-rose-600">Nossa História</h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            No Studio Josy, nossa missão é realçar a beleza natural de cada cliente com tratamentos personalizados e atendimento de excelência. Com anos de experiência, nossa equipe é apaixonada pelo que faz e dedicada a proporcionar momentos de cuidado e autoestima.
+                        </p>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Utilizamos produtos de alta qualidade e técnicas modernas para garantir resultados incríveis e duradouros. Nosso compromisso é fazer você se sentir especial e radiante.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-rose-50 rounded-lg">
+                                <div class="text-2xl font-bold text-rose-600">500+</div>
+                                <div class="text-sm text-gray-600">Clientes Felizes</div>
+                            </div>
+                            <div class="text-center p-4 bg-rose-50 rounded-lg">
+                                <div class="text-2xl font-bold text-rose-600">5+</div>
+                                <div class="text-sm text-gray-600">Anos de Experiência</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fade-in-right">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Nossa equipe" class="w-full h-96 object-cover rounded-lg shadow-lg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-rose-600/20 to-transparent rounded-lg"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-rose-600 via-rose-500 to-purple-600 text-white scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-in-up">
+                    <div class="stats-counter text-white">500+</div>
+                    <p class="text-rose-100">Clientes Satisfeitas</p>
+                </div>
+                <div class="fade-in-up">
+                    <div class="stats-counter text-white">5+</div>
+                    <p class="text-rose-100">Anos de Experiência</p>
+                </div>
+                <div class="fade-in-up">
+                    <div class="stats-counter text-white">15+</div>
+                    <p class="text-rose-100">Serviços Oferecidos</p>
+                </div>
+                <div class="fade-in-up">
+                    <div class="stats-counter text-white">100%</div>
+                    <p class="text-rose-100">Satisfação Garantida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100 scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Depoimentos</h2>
+                    <div class="section-divider"></div>
+                    <p class="max-w-2xl mx-auto text-gray-600">O que nossas clientes dizem sobre nós</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="testimonial-card p-8 rounded-lg shadow-md fade-in-left gpu-accelerated">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Maria Silva" class="w-16 h-16 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-rose-600 mb-2">Maria Silva</p>
+                                <div class="flex mb-3">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <p class="text-gray-700 italic">O Studio Josy transformou minha autoestima! Atendimento impecável e resultados incríveis. Recomendo de olhos fechados!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card p-8 rounded-lg shadow-md fade-in-right gpu-accelerated">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Souza" class="w-16 h-16 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-rose-600 mb-2">Ana Souza</p>
+                                <div class="flex mb-3">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <p class="text-gray-700 italic">Profissionais dedicados e ambiente acolhedor. Cada visita é uma experiência única de cuidado e beleza.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card p-8 rounded-lg shadow-md fade-in-left gpu-accelerated">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Carla Santos" class="w-16 h-16 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-rose-600 mb-2">Carla Santos</p>
+                                <div class="flex mb-3">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <p class="text-gray-700 italic">Minha maquiagem de casamento ficou perfeita! A equipe entendeu exatamente o que eu queria. Gratidão eterna!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card p-8 rounded-lg shadow-md fade-in-right gpu-accelerated">
+                        <div class="flex items-start space-x-4">
+                            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Juliana Costa" class="w-16 h-16 rounded-full object-cover" />
+                            <div>
+                                <p class="font-semibold text-rose-600 mb-2">Juliana Costa</p>
+                                <div class="flex mb-3">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                </div>
+                                <p class="text-gray-700 italic">Ambiente luxuoso e tratamentos de primeira qualidade. Sempre saio de lá me sentindo uma nova pessoa!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-rose-600 via-rose-500 to-purple-600 text-white scroll-snap-section">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16 fade-in-up">
+                    <h2 class="heading-font text-3xl md:text-4xl font-bold mb-4">Entre em Contato</h2>
+                    <div class="section-divider bg-white"></div>
+                    <p class="max-w-2xl mx-auto text-rose-100">Agende seu horário e venha viver uma experiência única de beleza e bem-estar</p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="fade-in-left">
+                        <form id="contactForm" class="contact-form">
+                            <h3 class="text-2xl font-bold mb-6 text-rose-600">Envie sua Mensagem</h3>
+                            <div class="form-group">
+                                <label for="name" class="form-label text-rose-600">Nome Completo</label>
+                                <input type="text" id="name" name="name" required class="form-input" placeholder="Seu nome completo" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label text-rose-600">Email</label>
+                                <input type="email" id="email" name="email" required class="form-input" placeholder="seu@email.com" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label text-rose-600">Telefone</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" placeholder="(11) 99999-9999" />
+                            </div>
+                            <div class="form-group">
+                                <label for="service" class="form-label text-rose-600">Serviço de Interesse</label>
+                                <select id="service" name="service" class="form-input">
+                                    <option value="">Selecione um serviço</option>
+                                    <option value="corte">Cortes & Penteados</option>
+                                    <option value="coloracao">Coloração</option>
+                                    <option value="estetica">Estética Facial</option>
+                                    <option value="manicure">Manicure & Pedicure</option>
+                                    <option value="maquiagem">Maquiagem</option>
+                                    <option value="corporal">Tratamentos Corporais</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label text-rose-600">Mensagem</label>
+                                <textarea id="message" name="message" required class="form-input" rows="4" placeholder="Conte-nos como podemos ajudá-la..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary text-white px-8 py-4 rounded-full font-semibold transition text-lg w-full">
+                                <i class="fas fa-paper-plane mr-2"></i>Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="fade-in-right">
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+                                
+                                <div class="space-y-6">
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-map-marker-alt text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold mb-1">Endereço</h4>
+                                            <p class="text-rose-100">Rua Exemplo, 123<br>Bairro Centro, Cidade, Estado<br>CEP 00000-000</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-phone text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold mb-1">Telefone</h4>
+                                            <p class="text-rose-100">(11) 99999-9999</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-envelope text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold mb-1">Email</h4>
+                                            <p class="text-rose-100">contato@StudioJosy.com</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start space-x-4">
+                                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-clock text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold mb-1">Horário de Funcionamento</h4>
+                                            <p class="text-rose-100">
+                                                Segunda a Sexta: 9h - 19h<br>
+                                                Sábado: 9h - 17h<br>
+                                                Domingo: Fechado
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="font-semibold mb-4">Siga-nos nas Redes Sociais</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                        <i class="fab fa-instagram text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                        <i class="fab fa-facebook text-white"></i>
+                                    </a>
+                                    <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                        <i class="fab fa-whatsapp text-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="text-2xl font-bold heading-font gradient-text mb-4">
+                        <i class="fas fa-crown mr-2"></i>Studio Josy
+                    </div>
+                    <p class="text-gray-400 mb-4">Transformando beleza em arte desde 2019. Sua satisfação é nossa maior recompensa.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-rose-400 transition">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-rose-400 transition">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-rose-400 transition">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-rose-400 transition">Início</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-rose-400 transition">Serviços</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-rose-400 transition">Galeria</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-rose-400 transition">Sobre Nós</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-rose-400 transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contato Rápido</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-phone mr-2"></i>(11) 99999-9999</p>
+                        <p><i class="fas fa-envelope mr-2"></i>contato@StudioJosy.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Rua Exemplo, 123 - Centro</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Studio Josy. Todos os direitos reservados. Desenvolvido com ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Loading Screen
+        window.addEventListener('load', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Contact Form Handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const service = formData.get('service');
+                const message = formData.get('message');
+                
+                // Create WhatsApp message
+                const whatsappMessage = `Olá! Meu nome é ${name}.%0A%0A` +
+                    `Email: ${email}%0A` +
+                    `Telefone: ${phone}%0A` +
+                    `Serviço de interesse: ${service}%0A%0A` +
+                    `Mensagem: ${message}`;
+                
+                // Open WhatsApp
+                window.open(`https://wa.me/5511999999999?text=${whatsappMessage}`, '_blank');
+                
+                // Reset form
+                this.reset();
+                
+                // Show success message
+                alert('Mensagem enviada! Você será redirecionado para o WhatsApp.');
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animations
+        document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats Counter Animation
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
+            }, 20);
+        }
+
+        // Animate stats when in view
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stats-counter');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+                        animateCounter(counter, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats-counter').closest('section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Parallax Effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Navigation Active State
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
